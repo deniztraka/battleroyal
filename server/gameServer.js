@@ -1,7 +1,7 @@
 var config = require('./common/config.js');
 var logger = require('./common/logger.js');
 var utils = require('./common/utils.js');
-var NetworkProcessor = require('./network/networkProcessor.js');
+var NetworkedWorld = require('./network/networkedWorld.js');
 
 module.exports = class GameServer {
     constructor(io) {
@@ -10,7 +10,7 @@ module.exports = class GameServer {
         this.totalElapsedTimeFromSeconds = 0;
         this.timer = null;
 
-        this.networkProcessor = new NetworkProcessor(io);
+        this.networkedWorld = new NetworkedWorld(io);
     }
 
     start() {
@@ -18,6 +18,7 @@ module.exports = class GameServer {
         this.timer = setInterval(function() {
             self.mainLoop();
         }, 1000 * config.server.serverProcessFrequency);
+
     }
 
     mainLoop() {
@@ -26,12 +27,14 @@ module.exports = class GameServer {
         let deltaTime = this.totalElapsedTimeFromSeconds - this.lastTimeSeconds;
 
 
+        this.networkedWorld.process();
+
 
         this.lastTimeSeconds = this.totalElapsedTimeFromSeconds;
-
         //Terminal Logging
         utils.timerMechanics.executeByIntervalFromSeconds(this.totalElapsedTimeFromSeconds, 1,
-            function() { logger.terminal.debug("Total elapsed time from seconds: " + Math.floor(self.totalElapsedTimeFromSeconds)); });
+            function() { logger.terminal.debug("Total elapsed time from seconds: " + Math.floor(self.totalElapsedTimeFromSeconds)); 
+        });
     }
 
     stop() {

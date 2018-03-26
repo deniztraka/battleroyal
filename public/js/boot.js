@@ -15,6 +15,7 @@ GameStates.Boot.prototype = {
         this.load.image('preloaderBar', '../public/assets/sprites/preloader-bar.png');        
     },
     create: function () {
+        this.stage.disableVisibilityChange = true;
         // setup game environment
         // scale, input etc..
 

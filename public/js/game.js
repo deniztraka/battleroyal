@@ -1,6 +1,6 @@
 ﻿GameStates.Game = function(game) {};
 
-//var socket;
+var socket;
 
 GameStates.Game.prototype = {
     init: function(playerName) {
@@ -17,7 +17,7 @@ GameStates.Game.prototype = {
     create: function() {
         var self = this;
 
-        //socket = io(window.location.origin, { query: 'name=' + self.playerName });
+        socket = io(window.location.origin, { query: 'name=' + self.playerName });
     },
     update: function() {
 
