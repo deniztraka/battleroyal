@@ -16,11 +16,13 @@ GameStates.Game.prototype = {
     },
     create: function() {
         var self = this;
-
+        this.input.mouse.capture = true;
         socket = io(window.location.origin, { query: 'name=' + self.playerName });
     },
     update: function() {
-
+        if (this.input.activePointer.leftButton.isDown) {
+            socket.emit("clicked");
+        }
     },
     render: function() {},
 

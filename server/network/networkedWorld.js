@@ -10,8 +10,8 @@ module.exports = class NetworkedWorld {
         this.io = io;
         this.networkedClientDictionary = {};
 
-        io.on(constants.eventNames.connect, function (socket) {
-            let connectedSocket = socket;           
+        io.on(constants.eventNames.connect, function(socket) {
+            let connectedSocket = socket;
             self.clientIsConnected(connectedSocket);
         });
     }
@@ -19,15 +19,15 @@ module.exports = class NetworkedWorld {
     clientIsConnected(socket) {
         var self = this;
         if (socket) {
-            logger.terminal.audit(socket.id + " client is connected.");                        
+            logger.terminal.audit(socket.id + " client is connected.");
 
             //connected client is added to the dictionary
-            self.networkedClientDictionary[socket.id] = new NetworkedClient(socket, socket.handshake.query["name"]);
-
-            
+            self.networkedClientDictionary[socket.id] = new NetworkedClient(socket, socket.handshake.query.name);
 
 
-            socket.on(constants.eventNames.disconnect, function () {
+
+
+            socket.on(constants.eventNames.disconnect, function() {
                 self.clientIsDisconnected(socket);
             });
         }
@@ -35,11 +35,18 @@ module.exports = class NetworkedWorld {
 
     clientIsDisconnected(socket) {
         if (socket) {
+            delete this.networkedClientDictionary[socket.id]
             logger.terminal.audit(socket.id + " client is disconnected;");
         }
     }
 
-    process(){
+    process() {
         //update client position and rotation data
+        for (var key in this.networkedClientDictionary) {
+            var networkedClient = this.networkedClientDictionary[key];
+            if (networkedClient) {
+                console.log(networkedClient.player.name);
+            }
+        }
     }
 };

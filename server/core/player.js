@@ -1,5 +1,5 @@
 module.exports = class Player {
-    cosntructor(name) {
+    constructor(name) {
         this.name = name;
     }
 };
