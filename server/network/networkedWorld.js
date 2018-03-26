@@ -24,6 +24,7 @@ module.exports = class NetworkedWorld {
             //connected client is added to the dictionary
             self.networkedClientDictionary[socket.id] = new NetworkedClient(socket, socket.handshake.query.name);
 
+            socket.emit(constants.commandNames.createLocalPlayer);
 
 
 

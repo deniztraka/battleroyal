@@ -1,6 +1,7 @@
-﻿GameStates.Game = function(game) {};
+﻿GameStates.Game = function(game) {
+    this.socket = null;
+};
 
-var socket;
 
 GameStates.Game.prototype = {
     init: function(playerName) {
@@ -17,11 +18,12 @@ GameStates.Game.prototype = {
     create: function() {
         var self = this;
         this.input.mouse.capture = true;
-        socket = io(window.location.origin, { query: 'name=' + self.playerName });
+        this.socket = io(window.location.origin, { query: 'name=' + self.playerName });
+        NetworkedWorld.Init(this);
     },
     update: function() {
         if (this.input.activePointer.leftButton.isDown) {
-            socket.emit("clicked");
+            this.socket.emit("clicked");
         }
     },
     render: function() {},
