@@ -15,5 +15,4 @@ module.exports = class InputProcessor {
             self.player.name = "denoi";
         });
     }
-
 };

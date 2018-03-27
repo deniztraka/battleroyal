@@ -20,11 +20,12 @@ GameStates.Game.prototype = {
         this.input.mouse.capture = true;
         this.socket = io(window.location.origin, { query: 'name=' + self.playerName });
         NetworkedWorld.Init(this);
+        InputManager.Init(this, this.socket);
     },
     update: function() {
-        if (this.input.activePointer.leftButton.isDown) {
-            this.socket.emit("clicked");
-        }
+        InputManager.CheckMovement();
+        InputManager.CheckMousePosition();
+        InputManager.CheckMouseClicks();
     },
     render: function() {},
 

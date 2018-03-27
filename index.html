@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>battleroyal</title>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
@@ -12,20 +13,88 @@
            v2.0 | 20110126
            License: none (public domain)
         */
-
-        html, body, div, span, applet, object, iframe,
-        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-        a, abbr, acronym, address, big, cite, code,
-        del, dfn, em, img, ins, kbd, q, s, samp,
-        small, strike, strong, sub, sup, tt, var,
-        b, u, i, center,
-        dl, dt, dd, ol, ul, li,
-        fieldset, form, label, legend,
-        table, caption, tbody, tfoot, thead, tr, th, td,
-        article, aside, canvas, details, embed,
-        figure, figcaption, footer, header, hgroup,
-        menu, nav, output, ruby, section, summary,
-        time, mark, audio, video {
+        
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
             margin: 0;
             padding: 0;
             border: 0;
@@ -34,46 +103,63 @@
             vertical-align: baseline;
         }
         /* HTML5 display-role reset for older browsers */
-        article, aside, details, figcaption, figure,
-        footer, header, hgroup, menu, nav, section {
+        
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
             display: block;
         }
-
+        
         body {
             line-height: 1;
         }
-
-        ol, ul {
+        
+        ol,
+        ul {
             list-style: none;
         }
-
-        blockquote, q {
+        
+        blockquote,
+        q {
             quotes: none;
         }
-
-            blockquote:before, blockquote:after,
-            q:before, q:after {
-                content: '';
-                content: none;
-            }
-
+        
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+        
         table {
             border-collapse: collapse;
             border-spacing: 0;
         }
     </style>
-    <script src="/public/libs/CanvasInput.min.js"></script> 
-    <script src="/public/js/app.js"></script>   
+    <script src="/public/libs/CanvasInput.min.js"></script>
+    <script src="/public/js/app.js"></script>
     <script src="/public/js/core/player.js"></script>
+    <script src="/public/js/network/inputManager.js"></script>
     <script src="/public/js/network/networkedClient.js"></script>
-    <script src="/public/js/network/networkedWorld.js"></script>    
+    <script src="/public/js/network/networkedWorld.js"></script>
     <script src="/public/js/boot.js"></script>
     <script src="/public/js/preloader.js"></script>
     <script src="/public/js/splashScreen.js"></script>
     <script src="/public/js/mainmenu.js"></script>
     <script src="/public/js/game.js"></script>
 </head>
+
 <body>
     <div id="content"></div>
 </body>
+
 </html>
