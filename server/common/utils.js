@@ -68,7 +68,7 @@ module.exports = {
     },
     timerMechanics: {
         executeAfterSeconds: function(seconds, executeFunction) {
-            setTimeout(function() { executeFunction() }, seconds * 1000);
+            setTimeout(function() { executeFunction(); }, seconds * 1000);
         },
         executeByIntervalFromSeconds: function(totalElapsedTimeFromSeconds, frequency, functionToProcess) {
             var mod = totalElapsedTimeFromSeconds % frequency;

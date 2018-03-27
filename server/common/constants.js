@@ -12,8 +12,10 @@
         }
     },
     commandNames: {
-        createLocalPlayer : "s_CreateLocalPlayer",
-        createNewRemotePlayer : "s_CreateNewRemotePlayer"
+        createLocalPlayer: "s_CreateLocalPlayer",
+        createNewRemotePlayer: "s_CreateNewRemotePlayer",
+        createLoggedInPlayers: "s_CreateLoggedInPlayers",
+        removePlayer: "s_RemovePlayer"
     },
     game: {
         player: {
@@ -22,7 +24,7 @@
             speed: 1.5,
             runningSpeedMultiplier: 2,
             type: "alive",
-            attackRate : 0.5
+            attackRate: 0.5
         }
     }
-}
+};

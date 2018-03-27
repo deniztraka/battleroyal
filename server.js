@@ -21,8 +21,3 @@ serv.listen(process.env.PORT || config.server.port, function(s) {
 //opening game server
 var gameServer = new GameServer(io);
 gameServer.start();
-
-// player connected event
-//io.on(constants.eventNames.connect, function(socket) {
-//
-//});
