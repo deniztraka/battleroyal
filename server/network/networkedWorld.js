@@ -79,7 +79,8 @@ module.exports = class NetworkedWorld {
         for (var key in this.networkedClientDictionary) {
             var networkedClient = this.networkedClientDictionary[key];
             if (networkedClient) {
-                //console.log(networkedClient.player.name);
+                //console.log(networkedClient.player.movementStates.isMovingUp + " " + networkedClient.player.movementStates.isMovingDown + " " + networkedClient.player.movementStates.isMovingLeft + " " + networkedClient.player.movementStates.isMovingRight);
+                console.log(networkedClient.player.position.x + " " + networkedClient.player.position.y);
             }
         }
     }

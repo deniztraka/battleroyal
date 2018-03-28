@@ -30,7 +30,7 @@ var InputManager = (function(my) {
             if (e.keyCode == Phaser.Keyboard.W || e.keyCode == Phaser.Keyboard.UP) {
                 socket.emit("c_OnUpKeyPressed", false);
                 upDown = false;
-                //console.log("upUp");
+                console.log("upUp");
             }
             if (e.keyCode == Phaser.Keyboard.S || e.keyCode == Phaser.Keyboard.DOWN) {
                 socket.emit("c_OnDownKeyPressed", false);
