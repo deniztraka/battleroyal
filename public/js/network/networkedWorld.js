@@ -8,6 +8,19 @@ var NetworkedWorld = (function(my) {
         game.socket.on("s_CreateLoggedInPlayers", createLoggedInPlayers);
         game.socket.on("s_RemovePlayer", removePlayer);
         game.socket.on("s_CreateNewRemotePlayer", createNewRemotePlayer);
+        //game.socket.on("s_UpdatePositions", updateClientPosition);
+        game.socket.on("s_UpdatePositions", updateClientPosition);
+    }
+
+    function updateClientPosition(socketData) {
+        for (var key in clientList) {
+            var client = clientList[key];
+            if (client) {
+                //client.player.position.x = socketData[key].x;
+                //client.player.position.y = socketData[key].y;
+                game.add.tween(client.player.position).to({ x: socketData[key].x, y: socketData[key].y }, 200, Phaser.Easing.Linear.In, true, -1, false);
+            }
+        }
     }
 
     function createLocalPlayer(socketData) {

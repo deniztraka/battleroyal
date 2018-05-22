@@ -20,6 +20,16 @@ var InputManager = (function(my) {
         }
     }
 
+    function mousePositionHandle() {
+        var totalElapsedSeconds = game.time.now;
+        if (totalElapsedSeconds > nextMousePositionSendTime) {
+            nextMousePositionSendTime = totalElapsedSeconds + 1000 / 5;
+            socket.emit("c_OnMousePosition", { x: game.input.mousePointer.worldX, y: game.input.mousePointer.worldY });
+            //console.log("mouse pos check");
+        }
+    }
+
+
     my.Init = function(_game, _socket) {
         game = _game;
         socket = _socket;
@@ -106,12 +116,7 @@ var InputManager = (function(my) {
     };
 
     my.CheckMousePosition = function() {
-        var totalElapsedSeconds = game.time.now;
-        if (totalElapsedSeconds > nextMousePositionSendTime) {
-            nextMousePositionSendTime = totalElapsedSeconds + 1000 / 5;
-            socket.emit("c_MousePosition", { x: game.input.mousePointer.worldX, y: game.input.mousePointer.worldY });
-            //console.log("mouse pos check");
-        }
+        mousePositionHandle();
     };
 
 

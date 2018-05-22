@@ -8,6 +8,8 @@ var NetworkedClient = require('./networkedClient.js');
 module.exports = class NetworkedWorld {
     constructor(io) {
         let self = this;
+        this.totalElapsedTimeFromSeconds = 0;
+
         this.io = io;
         this.networkedClientDictionary = {};
 
@@ -23,7 +25,7 @@ module.exports = class NetworkedWorld {
             logger.terminal.audit(socket.id + " client is connected.");
 
             //creating random position object. thiss will be gathered by another logic in the future
-            var randomPosition = { x: utils.math.randomInt(0, 500), y: utils.math.randomInt(0, 500) };
+            var randomPosition = { x: utils.math.randomInt(0, 200), y: utils.math.randomInt(0, 200) };
             var pName = socket.handshake.query.name;
 
             //connected client is added to the dictionary
@@ -74,14 +76,36 @@ module.exports = class NetworkedWorld {
         return playerList;
     }
 
-    process() {
+    process(deltaTime) {
+        var self = this;
         //update client position and rotation data
         for (var key in this.networkedClientDictionary) {
             var networkedClient = this.networkedClientDictionary[key];
             if (networkedClient) {
+                networkedClient.inputProcessor.process();
                 //console.log(networkedClient.player.movementStates.isMovingUp + " " + networkedClient.player.movementStates.isMovingDown + " " + networkedClient.player.movementStates.isMovingLeft + " " + networkedClient.player.movementStates.isMovingRight);
-                console.log(networkedClient.player.position.x + " " + networkedClient.player.position.y);
+                //console.log(networkedClient.player.position.x + " " + networkedClient.player.position.y);
             }
         }
+
+
+
+    }
+
+    updateClientsPositions() {
+        var positionDataObj = {};
+
+        for (var key in this.networkedClientDictionary) {
+            var networkedClient = this.networkedClientDictionary[key];
+            if (networkedClient) {
+                //networkedClient.socket.emit(constants.commandNames.updatePositions);
+                //console.log("asd");
+                positionDataObj[networkedClient.socket.id] = networkedClient.player.position;
+            }
+        }
+        //if (positionDataList.length > 0) {
+        //console.log("asd");
+        this.io.emit(constants.commandNames.updatePositions, positionDataObj);
+        //}
     }
 };

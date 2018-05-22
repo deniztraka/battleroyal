@@ -8,14 +8,17 @@
             OnLeftKeyPressed: "c_OnLeftKeyPressed",
             OnRightKeyPressed: "c_OnRightKeyPressed",
             OnShiftKeyPressed: "c_OnShiftKeyPressed",
-            OnEKeyPressed: "c_OnEKeyPressed"
+            OnEKeyPressed: "c_OnEKeyPressed",
+            OnMouseClicked: "c_OnMouseClicked",
+            OnMousePosition: "c_OnMousePosition"
         }
     },
     commandNames: {
         createLocalPlayer: "s_CreateLocalPlayer",
         createNewRemotePlayer: "s_CreateNewRemotePlayer",
         createLoggedInPlayers: "s_CreateLoggedInPlayers",
-        removePlayer: "s_RemovePlayer"
+        removePlayer: "s_RemovePlayer",
+        updatePositions: "s_UpdatePositions"
     },
     game: {
         player: {

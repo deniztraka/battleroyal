@@ -27,14 +27,22 @@ module.exports = class GameServer {
         let deltaTime = this.totalElapsedTimeFromSeconds - this.lastTimeSeconds;
 
 
-        this.networkedWorld.process();
+        this.networkedWorld.process(deltaTime);
 
 
+        utils.timerMechanics.executeByIntervalFromSeconds(this.totalElapsedTimeFromSeconds, 1 / 60,
+            function() {
+                self.networkedWorld.updateClientsPositions();
+            });
+
+        this.networkedWorld.totalElapsedTimeFromSeconds = this.totalElapsedTimeFromSeconds;
         this.lastTimeSeconds = this.totalElapsedTimeFromSeconds;
+
         //Terminal Logging
         utils.timerMechanics.executeByIntervalFromSeconds(this.totalElapsedTimeFromSeconds, 1,
-            function() { logger.terminal.debug("Total elapsed time from seconds: " + Math.floor(self.totalElapsedTimeFromSeconds)); 
-        });
+            function() {
+                logger.terminal.debug("Total elapsed time from seconds: " + Math.floor(self.totalElapsedTimeFromSeconds));
+            });
     }
 
     stop() {
